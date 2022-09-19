@@ -13,6 +13,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
+    val botoes = listOf(
+        R.id.btn_1,
+        R.id.btn_2,
+        R.id.btn_3,
+        R.id.btn_4,
+        R.id.btn_5,
+        R.id.btn_6,
+        R.id.btn_7,
+        R.id.btn_8,
+        R.id.btn_9,
+    )
+
+
     fun btnClick(view: View) {
         val btnSelecionado =  view as Button;
         var cellId = 0;
@@ -28,10 +41,9 @@ class MainActivity : AppCompatActivity() {
             R.id.btn_8 -> cellId = 8
             R.id.btn_9 -> cellId = 9
         }
-
-        //Toast.makeText(this, "ID: $cellId", Toast.LENGTH_LONG).show();
-
+//        Toast.makeText(this, "ID: $cellId", Toast.LENGTH_LONG).show();
         playJogada(cellId, btnSelecionado)
+
     }
 
     // Array guarda a jogada de cada jogador
@@ -58,8 +70,15 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
-
+    fun verificaGanhador(valor_1: Int, valor_2: Int, valor_3: Int) {
+        var ganhador = -1;
+        if (jogador1.contains(1) && jogador1.contains(2) && jogador1.contains(3)) {
+            ganhador = 1;
+            //Verifica ganhador linha 1
+        } else if (jogador2.contains(1) && jogador2.contains(2) && jogador2.contains(3)) {
+            ganhador = 2;
+        }
+    }
 
     fun validaVencedor() {
         var ganhador = -1;
@@ -67,76 +86,56 @@ class MainActivity : AppCompatActivity() {
         //Verifica ganhador linha 1
         if (jogador1.contains(1) && jogador1.contains(2) && jogador1.contains(3)) {
             ganhador = 1;
-        }
-        //Verifica ganhador linha 1
-        if (jogador2.contains(1) && jogador2.contains(2) && jogador2.contains(3)) {
+          //Verifica ganhador linha 1
+        } else if (jogador2.contains(1) && jogador2.contains(2) && jogador2.contains(3)) {
             ganhador = 2;
-        }
 
-
-        //Verifica ganhador linha 2
-        if (jogador1.contains(4) && jogador1.contains(5) && jogador1.contains(6)) {
+          //Verifica ganhador linha 2
+        } else if (jogador1.contains(4) && jogador1.contains(5) && jogador1.contains(6)) {
             ganhador = 1;
-        }
-        //Verifica ganhador linha 2
-        if (jogador2.contains(4) && jogador2.contains(5) && jogador2.contains(6)) {
-            ganhador = 2;
-        }
 
-        //Verifica ganhador linha 3
-        if (jogador1.contains(7) && jogador1.contains(8) && jogador1.contains(9)) {
+          //Verifica ganhador linha 2
+        } else if (jogador2.contains(4) && jogador2.contains(5) && jogador2.contains(6)) {
+            ganhador = 2;
+
+          //Verifica ganhador linha 3
+        } else if (jogador1.contains(7) && jogador1.contains(8) && jogador1.contains(9)) {
             ganhador = 1;
-        }
-        //Verifica ganhador linha 3
-        if (jogador2.contains(7) && jogador2.contains(8) && jogador2.contains(9)) {
-            ganhador = 2;
-        }
 
-        //Verifica ganhador diagonal 1
-        if (jogador1.contains(1) && jogador1.contains(5) && jogador1.contains(9)) {
+          //Verifica ganhador linha 3
+        } else if (jogador2.contains(7) && jogador2.contains(8) && jogador2.contains(9)) {
+            ganhador = 2;
+          //Verifica ganhador diagonal 1
+        } else if (jogador1.contains(1) && jogador1.contains(5) && jogador1.contains(9)) {
             ganhador = 1;
-        }
-        //Verifica ganhador diagonal 1
-        if (jogador2.contains(1) && jogador2.contains(5) && jogador2.contains(9)) {
+          //Verifica ganhador diagonal 1
+        } else if (jogador2.contains(1) && jogador2.contains(5) && jogador2.contains(9)) {
             ganhador = 2;
-        }
-
-        //Verifica ganhador diagonal 2
-        if (jogador1.contains(3) && jogador1.contains(5) && jogador1.contains(7)) {
+          //Verifica ganhador diagonal 2
+        } else if (jogador1.contains(3) && jogador1.contains(5) && jogador1.contains(7)) {
             ganhador = 1;
-        }
-        //Verifica ganhador diagonal 2
-        if (jogador2.contains(3) && jogador2.contains(5) && jogador2.contains(7)) {
+          //Verifica ganhador diagonal 2
+        } else if (jogador2.contains(3) && jogador2.contains(5) && jogador2.contains(7)) {
             ganhador = 2;
-        }
-
-        //Verifica ganhador coluna 1
-        if (jogador1.contains(1) && jogador1.contains(4) && jogador1.contains(7)) {
+          //Verifica ganhador coluna 1
+        } else if (jogador1.contains(1) && jogador1.contains(4) && jogador1.contains(7)) {
             ganhador = 1;
-        }
-        //Verifica ganhador coluna 1
-        if (jogador2.contains(1) && jogador2.contains(4) && jogador2.contains(7)) {
+          //Verifica ganhador coluna 1
+        } else if (jogador2.contains(1) && jogador2.contains(4) && jogador2.contains(7)) {
             ganhador = 2;
-        }
-
-        //Verifica ganhador coluna 2
-        if (jogador1.contains(2) && jogador1.contains(5) && jogador1.contains(8)) {
+          //Verifica ganhador coluna 2
+        } else if (jogador1.contains(2) && jogador1.contains(5) && jogador1.contains(8)) {
             ganhador = 1;
-        }
-        //Verifica ganhador coluna 2
-        if (jogador2.contains(2) && jogador2.contains(5) && jogador2.contains(8)) {
+          //Verifica ganhador coluna 2
+        } else if (jogador2.contains(2) && jogador2.contains(5) && jogador2.contains(8)) {
             ganhador = 2;
-        }
-
-        //Verifica ganhador coluna 2
-        if (jogador1.contains(3) && jogador1.contains(6) && jogador1.contains(9)) {
+          //Verifica ganhador coluna 2
+        } else if (jogador1.contains(3) && jogador1.contains(6) && jogador1.contains(9)) {
             ganhador = 1;
-        }
-        //Verifica ganhador coluna 2
-        if (jogador2.contains(3) && jogador2.contains(6) && jogador2.contains(9)) {
+          //Verifica ganhador coluna 2
+        } else if (jogador2.contains(3) && jogador2.contains(6) && jogador2.contains(9)) {
             ganhador = 2;
         }
-
 
         if(ganhador != -1) {
             if (ganhador == 1) {
@@ -145,25 +144,18 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "JOGADOR 2 GANHOU O JOGO", Toast.LENGTH_SHORT).show();
             }
         }
-
     }
 
     fun limparCampos(view: View) {
-
-
-
         jogador1.clear();
         jogador2.clear();
 
-
-
-
-
-
-
-//        for(i in 1..9) {
-//            R.id.btn_1.setBackgroundColor(Color.GREEN);
-//        }
+        for (campoBotao in botoes) {
+            val obterBotao = findViewById<Button>(campoBotao);
+            obterBotao.text = "";
+            obterBotao.isEnabled = true;
+            obterBotao.setBackgroundColor(Color.BLUE)
+        }
     }
 
 }
